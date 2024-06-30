@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 function App() {
   const NavItem = ({ text }) => (
     <div className="text-lg font-semibold text-cyan-950">{text}</div>
