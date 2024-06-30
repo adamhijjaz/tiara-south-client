@@ -5,6 +5,12 @@ import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Berita from "./pages/Berita";
+import Latar from "./pages/Latar";
+import Program from "./pages/Program";
+import Aduan from "./pages/Aduan";
+import Direktori from "./pages/Direktori";
+
 function App() {
   const NavItem = ({ text }) => (
     <div className="text-lg font-semibold text-cyan-950">{text}</div>
@@ -12,26 +18,23 @@ function App() {
 
   const NavItems = () => (
     <nav className="flex gap-5 justify-between self-stretch my-auto max-md:flex-wrap max-md:mt-10">
-      <Link>
+      <Link to = "/Berita">
         <NavItem text="Berita Terkini" />
       </Link>
-      <Link>
+      <Link to ="/Latar">
         <NavItem text="Latar Belakang" />
       </Link>
       <Link>
         <NavItem text="Carta Organisasi" />
       </Link>
-      <Link>
+      <Link to ="/Program">
         <NavItem text="Program" />
       </Link>
-      <Link>
+      <Link to = "/Aduan">
         <NavItem text="Ruang Aduan" />
       </Link>
-      <Link>
+      <Link to = "/Direktori">
         <NavItem text="Direktori Servis" />
-      </Link>
-      <Link>
-        <NavItem text="Hubungi Kami" />
       </Link>
       <Link to="/Login">
         <NavItem text="Login" />
@@ -91,6 +94,11 @@ function App() {
           <Route path="/" exact Component={Home} />
           <Route path="/Login" exact Component={Login} />
           <Route path="/Signup" exact Component={Signup} />
+          <Route path="/Berita" exact Component={Berita} />
+          <Route path="/Latar" exact Component={Latar} />
+          <Route path="/Program" exact Component={Program} />
+          <Route path="/Aduan" exact Component={Aduan} />
+          <Route path="/Direktori" exact Component={Direktori} />
           
         </Routes>
       </Router>

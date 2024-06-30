@@ -3,7 +3,6 @@ import axios from "axios";
 import { useEffect } from "react";
 
 function Home() {
-
   useEffect(() => {
     try {
       axios.get("http://localhost:3001/auth/auth").then((resp) => {
@@ -34,21 +33,20 @@ function Home() {
           <div className="flex flex-col w-full max-w-[1000px] max-md:max-w-full">
             <div className="flex flex-col text-slate-50 max-md:max-w-full">
               <h2 className="self-center text-2xl font-extrabold uppercase tracking-[3.6px] max-md:max-w-full">
-                Join the Community
+                Sertai Komuniti
               </h2>
               <p className="mt-5 text-lg max-md:max-w-full">
-                Ready to take your digital art journey to new heights? <br />{" "}
+                Sedia untuk menjadikan Tiara South satu tempat yang sejahtera dan damai? <br />{" "}
                 <br />
-                Join the DesignForge community today and become part of a
-                dynamic and supportive ecosystem of digital artists and
-                enthusiasts. Whether you're here to showcase your work, learn
-                from others, or simply immerse yourself in the world of digital
-                creativity, DesignForge welcomes you with open arms.
+                Selamat Datang kepada semua pengunjung laman web Persatuan
+                Penduduk Tiara South, Semenyih. Di harap para pengunjung dapat
+                menggunakan wadah laman web ini sebagai satu medium penghubung
+                yang efektif di antara Persatuan ini dengan orang ramai.
               </p>
             </div>
             <div className="flex flex-col justify-center self-center mt-10 w-48 max-w-full text-lg font-semibold text-cyan-700">
               <button className="justify-center items-center px-16 py-5 rounded-xl shadow-sm bg-slate-50 max-md:px-5">
-                Join Us
+                Sertai Kami
               </button>
             </div>
           </div>
