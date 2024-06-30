@@ -33,7 +33,7 @@ function App() {
       <Link>
         <NavItem text="Hubungi Kami" />
       </Link>
-      <Link to = "/Login" >
+      <Link to="/Login">
         <NavItem text="Login" />
       </Link>
     </nav>
@@ -63,9 +63,9 @@ function App() {
                     alt=""
                     className="shrink-0 aspect-square w-[50px]"
                   />
-                  <Link to="/">
-                    <div className="flex-auto my-auto">TiaraSouth</div>
-                  </Link>
+                  <div className="flex-auto my-auto">
+                    <Link to="/">TiaraSouth</Link>
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col ml-5 w-[84%] max-md:ml-0 max-md:w-full">
