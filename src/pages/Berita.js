@@ -64,7 +64,7 @@ function Berita() {
             <div className="max-md:max-w-full">
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                 {displayedItems.map((item, index) => (
-                  <div key={index} className="flex flex-col w-6/12 max-md:ml-0 w-24 max-md:w-full">
+                  <div key={index} className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
                     <NewsCard {...item} />
                   </div>
                 ))}

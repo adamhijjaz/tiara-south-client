@@ -160,7 +160,7 @@ function Login() {
                       <span className="text-zinc-800">
                         Don't have an account?{" "}
                       </span>
-                      <button  href="/Signup" className="text-neutral-900">
+                      <button  href="/Signup" className="text-neutral-900 underline">
                         Log Masuk
                       </button>
                     </p>
