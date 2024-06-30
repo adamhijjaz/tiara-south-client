@@ -1,43 +1,21 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-
-const NavItem = ({ text }) => (
-  <div className="text-lg font-semibold text-cyan-950">{text}</div>
-);
-
-const NavItems = () => (
-  <nav className="flex gap-5 justify-between self-stretch my-auto max-md:flex-wrap max-md:mt-10">
-    <Link>
-      <NavItem text="Berita Terkini" />
-    </Link>
-    <Link>
-      <NavItem text="Latar Belakang" />
-    </Link>
-    <Link>
-      <NavItem text="Carta Organisasi" />
-    </Link>
-    <Link>
-      <NavItem text="Program" />
-    </Link>
-    <Link>
-      <NavItem text="Ruang Aduan" />
-    </Link>
-    <Link>
-      <NavItem text="Direktori Servis" />
-    </Link>
-    <Link>
-      <NavItem text="Hubungi Kami" />
-    </Link>
-    <Link to="/Login">
-      <NavItem text="Login" />
-    </Link>
-  </nav>
-);
-
 function App() {
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/posts").then((response) => {
+      try {
+        console.log("Response: ", response.data);
+     } catch (error) {
+        console.log("Hello"+error);
+     }
+    });
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -65,7 +43,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/" exact Component={Home} />
+          <Route path="/posts" exact Component={Home} />
           <Route path="/Login" exact Component={Login} />
           <Route path="/Signup" exact Component={Signup} />
         </Routes>
