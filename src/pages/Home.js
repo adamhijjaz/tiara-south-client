@@ -1,14 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function Home() {
-  const [listOfPosts, setListOfPosts] = useState([]);
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3001/posts").then((resp) => {
-        setListOfPosts(resp.data);
+      axios.get("http://localhost:3001/auth/auth").then((resp) => {
         try {
           console.log("Response: " + resp);
         } catch (error) {
@@ -16,7 +14,7 @@ function Home() {
         }
       });
     } catch (error) {
-      console.log("hello");
+      console.log("hello error happen in Home Page");
     }
   }, []);
 
