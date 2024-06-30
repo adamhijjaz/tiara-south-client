@@ -7,9 +7,14 @@ function Home() {
     const [listOfPosts, setListOfPosts] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/posts").then((resp) => {
+        axios.get("https://tiara-south-server.onrender.com").then((resp) => {
           setListOfPosts(resp.data);
-          console.log("Response: " + resp);
+          try {
+            
+            console.log("Response: " + resp);
+          } catch (error) {
+            console.log("Error :" + error);
+          }
         });
       }, []);
   

@@ -1,8 +1,23 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+
+
 function App() {
+
+  useEffect(() => {
+    axios.get("https://tiara-south-server.onrender.com").then((response) => {
+      try {
+        console.log("Response: ", response.data);
+     } catch (error) {
+        console.log(error);
+     }
+    });
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -10,7 +25,7 @@ function App() {
         <Link to="/"> Back </Link>
 
         <Routes>
-          <Route path="/" exact Component={Home} />
+          <Route path="/posts" exact Component={Home} />
           <Route path="/Login" exact Component={Login} />
         </Routes>
       </Router>
