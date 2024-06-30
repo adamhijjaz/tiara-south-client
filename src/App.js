@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -76,9 +76,10 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/posts" exact Component={Home} />
+          <Route path="/" exact Component={Home} />
           <Route path="/Login" exact Component={Login} />
           <Route path="/Signup" exact Component={Signup} />
+          
         </Routes>
       </Router>
     </div>
