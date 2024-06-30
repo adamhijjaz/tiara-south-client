@@ -40,7 +40,7 @@ function App() {
   );
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
+    axios.get("http://localhost:3001/auth/auth").then((response) => {
       try {
         console.log("Response: ", response.data);
       } catch (error) {
