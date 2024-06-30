@@ -5,6 +5,8 @@ import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Berita from "./pages/Berita";
+
 function App() {
   const NavItem = ({ text }) => (
     <div className="text-lg font-semibold text-cyan-950">{text}</div>
@@ -12,7 +14,7 @@ function App() {
 
   const NavItems = () => (
     <nav className="flex gap-5 justify-between self-stretch my-auto max-md:flex-wrap max-md:mt-10">
-      <Link>
+      <Link to = "/Berita">
         <NavItem text="Berita Terkini" />
       </Link>
       <Link>
@@ -79,6 +81,7 @@ function App() {
           <Route path="/" exact Component={Home} />
           <Route path="/Login" exact Component={Login} />
           <Route path="/Signup" exact Component={Signup} />
+          <Route path="/Berita" exact Component={Berita} />
           
         </Routes>
       </Router>
