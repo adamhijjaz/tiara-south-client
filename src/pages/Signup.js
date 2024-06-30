@@ -1,6 +1,10 @@
-import * as React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+// import { FidgetSpinner } from "react-loader-spinner";
 
-const InputField = ({ label, type = "text" }) => (
+
+const InputField = ({ label, type = "text", value, onChange }) => (
   <div className="flex flex-col mt-8 text-base whitespace-nowrap text-stone-500 max-md:max-w-full">
     <label htmlFor={label.toLowerCase()} className="justify-center py-2 max-md:max-w-full">
       {label}
@@ -8,26 +12,51 @@ const InputField = ({ label, type = "text" }) => (
     <input
       type={type}
       id={label.toLowerCase()}
+      value={value} // Pass value here
+      onChange={onChange} // Pass onChange here
       className="shrink-0 mt-1 h-14 rounded-xl border border-solid border-stone-500 border-opacity-30 max-md:max-w-full"
     />
   </div>
 );
 
-const PasswordRequirement = ({ text }) => (
-  <div className="flex gap-2 justify-center py-2">
-    <div className="shrink-0 my-auto w-2 h-2 rounded-full bg-stone-500 bg-opacity-60" />
-    <div>{text}</div>
-  </div>
-);
+// const PasswordRequirement = ({ text }) => (
+//   <div className="flex gap-2 justify-center py-2">
+//     <div className="shrink-0 my-auto w-2 h-2 rounded-full bg-stone-500 bg-opacity-60" />
+//     <div>{text}</div>
+//   </div>
+// );
 
-function MyComponent() {
-  const passwordRequirements = [
-    "Use 8 or more characters",
-    "One special character",
-    "One Uppercase character",
-    "One number",
-    "One lowercase character"
-  ];
+function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [loading, setLoading] = useState(false); // State variable for loading
+
+  const navigate = useNavigate();
+
+  const signup = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Check if any of the fields are empty
+    if (!email || !password) {
+      alert("Please fill out all the fields.");
+      return; // Exit the function early if any field is empty
+    }
+
+    const data = {
+      email: email,
+      password: password,
+    };
+
+    axios.post("http://localhost:3001/auth/signup", data).then((response) => {
+      console.log(response.data);
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        alert("Success register");
+        navigate("/login");
+      }
+    });
+  };
 
   return (
     <main className="flex flex-col grow pt-4 pr-20 pb-20 pl-4 max-md:pr-5 max-md:max-w-full">
@@ -45,8 +74,12 @@ function MyComponent() {
           </p>
         </div>
         <form>
-          <InputField label="Email" type="email" />
-          <InputField label="Username" />
+          <InputField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
           <div className="flex flex-col mt-8 max-md:max-w-full">
             <div className="flex flex-col whitespace-nowrap max-md:max-w-full">
               <div className="flex gap-5 py-0.5 pr-2.5 w-full max-md:flex-wrap max-md:max-w-full">
@@ -59,23 +92,10 @@ function MyComponent() {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 className="shrink-0 mt-1 h-14 rounded-xl border border-solid border-stone-500 border-opacity-30 max-md:max-w-full"
               />
-            </div>
-            <div className="flex gap-5 pr-5 text-sm text-stone-500 text-opacity-60 max-md:flex-wrap">
-              <div className="flex flex-col">
-                {passwordRequirements.slice(0, 2).map((req, index) => (
-                  <PasswordRequirement key={index} text={req} />
-                ))}
-              </div>
-              <div className="flex flex-col">
-                {passwordRequirements.slice(2, 4).map((req, index) => (
-                  <PasswordRequirement key={index + 2} text={req} />
-                ))}
-              </div>
-              <div className="flex flex-col justify-center self-start">
-                <PasswordRequirement text={passwordRequirements[4]} />
-              </div>
             </div>
           </div>
           <div className="flex gap-2 py-2 mt-8 mr-6 text-base text-zinc-800 max-md:flex-wrap max-md:mr-2.5">
@@ -92,8 +112,8 @@ function MyComponent() {
             <span className="text-zinc-800">and</span>{" "}
             <a href="#" className="underline text-neutral-900">Privacy Policy.</a>{" "}
           </p>
-          <button className="flex flex-col justify-center mt-8 w-64 max-w-full text-2xl font-medium text-center text-white">
-            <div className="flex flex-col justify-center px-6 py-4 bg-neutral-900 rounded-[32px] max-md:px-5">
+          <button onClick={signup} className="flex flex-col justify-center mt-8 w-64 max-w-full text-2xl font-medium text-center text-white">
+            <div className="flex flex-col justify-center px-6 py-4 bg-neutral-900 rounded-[16px] max-md:px-5">
               <span className="justify-center">Create an account</span>
             </div>
           </button>
@@ -103,4 +123,4 @@ function MyComponent() {
   );
 }
 
-export default MyComponent;
+export default Signup;

@@ -1,25 +1,74 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../helpers/AuthContext";
 
 const InputField = ({ label, type = "text", id }) => (
   <div className="flex flex-col text-base text-stone-500 max-md:max-w-full">
-    <label htmlFor={id} className="justify-center py-2 text-left max-md:max-w-full">
+    <label
+      htmlFor={id}
+      className="justify-center py-2 text-left max-md:max-w-full"
+    >
       {label}
     </label>
     <input
+    placeholder="example@gmail.com"
       type={type}
       id={id}
-      className="shrink-0 mt-1 h-14 rounded-xl border border-solid border-stone-500 border-opacity-30 max-md:max-w-full"
+      className="shrink-0 mt-1 h-14 rounded-xl border border-solid border-stone-500 border-opacity-30 max-md:max-w-full p-2"
     />
   </div>
 );
 
-const SignInButton = () => (
-  <button className="flex justify-center items-center px-16 py-4 text-xl text-center text-white bg-neutral-900 rounded-[32px] max-md:px-5 w-full">
-    Sign in
+const LogInButton = () => (
+  <button  className="flex justify-center items-center px-16 py-4 text-xl text-center text-white bg-neutral-900 rounded-[16px] max-md:px-5 w-full">
+    Log Masuk
   </button>
 );
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setAuthState } = useContext(AuthContext);
+  // const [loading, setLoading] = useState(false); // State variable for loading
+
+  const navigate = useNavigate();
+
+  const login = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Set loading state to true when login button is clicked
+    // setLoading(true);
+
+    const data = {
+      email: email,
+      password: password,
+    };
+
+    axios
+      .post("http://localhost:3001/auth/login", data)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.error) {
+          alert(response.data.error);
+          // setLoading(false); // Set loading to false on error
+        } else {
+          localStorage.setItem("accessToken", response.data.token);
+          setAuthState({
+            email: response.data.email,
+            id: response.data.id,
+            status: true,
+          });
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Error logging in:", error);
+        // Set loading to false on error
+        // setLoading(false);
+      });
+  };
+
   return (
     <div className="bg-white">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
@@ -53,13 +102,17 @@ function Login() {
           <div className="flex flex-col grow justify-center px-16 py-20 max-md:px-5 max-md:max-w-full">
             <div className="flex flex-col mx-4 mt-52 max-md:mt-10 max-md:mr-2.5 max-md:max-w-full">
               <h2 className="text-3xl font-medium text-zinc-800 text-left max-md:text-center max-md:max-w-full">
-                Sign in
+                Log Masuk
               </h2>
-              <form className="flex flex-col mt-12 max-md:mt-10 max-md:max-w-full">
+              <form className="flex flex-col mt-12 max-md:mt-10 max-md:max-w-full p-2">
                 <InputField
-                  label="User name or email address"
-                  id="username"
-                  type="text"
+                  label="Alamat e-mel"
+                  id="email"
+                  type="email"
+                  
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
                 />
                 <div className="flex flex-col mt-5 max-md:max-w-full">
                   <div className="flex flex-col max-md:max-w-full">
@@ -83,26 +136,35 @@ function Login() {
                     <input
                       type="password"
                       id="password"
-                      className="shrink-0 mt-1 h-14 rounded-xl border border-solid border-stone-500 border-opacity-30 max-md:max-w-full"
+                      name="password"
+                      placeholder="Kata kunci"
+                      className="shrink-0 mt-1 h-14 rounded-xl border border-solid border-stone-500 border-opacity-30 max-md:max-w-full p-2"
+                      onChange={(event) => {
+                        setPassword(event.target.value);
+                      }}
                     />
                   </div>
                   <a
                     href="#"
                     className="self-end mt-2 text-base text-right underline text-neutral-900"
                   >
-                    Forget your password
+                    Forgot your password
                   </a>
                 </div>
-                <div className="flex flex-col mt-5 max-w-full w-[304px]">
-                  <SignInButton />
-                  <p className="justify-center p-0.5 mt-2 text-base underline text-neutral-900">
-                    <span className="text-zinc-800">
-                      Don't have an account?{" "}
-                    </span>
-                    <a href="Signup" className="text-neutral-900">
-                      Sign up
-                    </a>
-                  </p>
+                <div className="flex flex-col justify-center items-center mt-5 max-w-full w-[304px]">
+                  <div className="w-full">
+                    <LogInButton  />
+                  </div>
+                  <div className="w-full">
+                    <p className="justify-center p-0.5 mt-2 text-base underline text-neutral-900">
+                      <span className="text-zinc-800">
+                        Don't have an account?{" "}
+                      </span>
+                      <button  href="/Signup" className="text-neutral-900">
+                        Log Masuk
+                      </button>
+                    </p>
+                  </div>
                 </div>
               </form>
             </div>
@@ -110,7 +172,7 @@ function Login() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 export default Login;

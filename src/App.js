@@ -40,13 +40,25 @@ function App() {
   );
 
   useEffect(() => {
-    axios.get("http://localhost:3001/auth/auth").then((response) => {
+    const checkAccessToken = async () => {
       try {
-        console.log("Response: ", response.data);
+        const response = await axios.get("http://localhost:3001/auth/auth", {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        });
+        // Assuming the backend returns a successful response
+        console.log("User is authenticated:", response.data);
+        // Proceed with any logic based on authentication status
       } catch (error) {
-        console.log("Hello" + error);
+        // Handle unauthorized or other errors here
+        console.error("Authentication error:", error);
+        // Redirect user to login or handle authentication failure
       }
-    });
+    };
+  
+    // Call the function to check accessToken
+    checkAccessToken();
   }, []);
 
   return (
