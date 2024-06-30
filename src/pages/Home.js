@@ -22,7 +22,7 @@ function Home() {
       <section className="flex overflow-hidden relative flex-col justify-center items-center px-16 pt-16 pb-24 w-full text-8xl font-bold text-center text-white backdrop-blur-[2px] min-h-[322px] tracking-[7.68px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
         <img
           loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e094ddfe0b77312e55da12717461ee1e662468af98f306f5dfd3eb4a55d9dd80?apiKey=03f5df226c30468fbf8fdf985b85fe26&"
+          src="https://png.pngtree.com/background/20230424/original/pngtree-an-aerial-view-of-residential-buildings-with-green-roofs-picture-image_2462208.jpg"
           alt=""
           className="object-cover absolute inset-0 size-full"
         />
@@ -45,7 +45,7 @@ function Home() {
               </p>
             </div>
             <div className="flex flex-col justify-center self-center mt-10 w-48 max-w-full text-lg font-semibold text-cyan-700">
-              <button className="justify-center items-center px-16 py-5 rounded-xl shadow-sm bg-slate-50 max-md:px-5">
+              <button className="justify-center items-center px-8 py-2 rounded-xl shadow-sm bg-slate-50 max-md:px-5">
                 Sertai Kami
               </button>
             </div>
