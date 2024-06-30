@@ -9,11 +9,11 @@ import Login from "./pages/Login";
 function App() {
 
   useEffect(() => {
-    axios.get("https://tiara-south-server.onrender.com").then((response) => {
+    axios.get("http://localhost:3001/posts").then((response) => {
       try {
         console.log("Response: ", response.data);
      } catch (error) {
-        console.log(error);
+        console.log("Hello"+error);
      }
     });
   }, []);

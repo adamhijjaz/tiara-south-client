@@ -3,22 +3,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Home() {
-    
-    const [listOfPosts, setListOfPosts] = useState([]);
+  const [listOfPosts, setListOfPosts] = useState([]);
 
-    useEffect(() => {
-        axios.get("https://tiara-south-server.onrender.com").then((resp) => {
-          setListOfPosts(resp.data);
-          try {
-            
-            console.log("Response: " + resp);
-          } catch (error) {
-            console.log("Error :" + error);
-          }
-        });
-      }, []);
-  
-    return (
+  useEffect(() => {
+    try {
+      axios.get("http://localhost:3001/posts").then((resp) => {
+        setListOfPosts(resp.data);
+        try {
+          console.log("Response: " + resp);
+        } catch (error) {
+          console.log("Error :" + error);
+        }
+      });
+    } catch (error) {
+      console.log("hello");
+    }
+   
+  }, []);
+
+  return (
     <div>
       {listOfPosts.map((value, key) => {
         return (
