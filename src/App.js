@@ -29,6 +29,7 @@ function App() {
     { to: "/login", text: "Log Masuk" },
   ];
   
+  
   const NavItems = () => (
     <nav className="flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
       {navLinks.map((link, index) => (
