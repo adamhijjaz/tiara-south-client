@@ -4,17 +4,21 @@ import { useEffect } from "react";
 
 function Home() {
   useEffect(() => {
-    try {
-      axios.get("http://localhost:3001/auth/auth").then((resp) => {
-        try {
-          console.log("Response: " + resp);
-        } catch (error) {
-          console.log("Error :" + error);
-        }
-      });
-    } catch (error) {
-      console.log("hello error happen in Home Page");
-    }
+    const checkAccessToken = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/auth/auth", {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        });
+        console.log("User is authenticated:", response.data);
+      } catch (e) {
+        console.error("User is not authenticated:", e);
+      }
+    };
+
+    // Call the function to check accessToken
+    checkAccessToken();
   }, []);
 
   return (
@@ -24,28 +28,28 @@ function Home() {
           loading="lazy"
           src="https://png.pngtree.com/background/20230424/original/pngtree-an-aerial-view-of-residential-buildings-with-green-roofs-picture-image_2462208.jpg"
           alt=""
-          className="object-cover absolute inset-0 size-full"
+          className="absolute inset-0 object-cover size-full"
         />
         PERSATUAN PENDUDUK <br /> TIARA SOUTH
       </section>
-      <section className="flex flex-col pb-10 w-full text-center bg-cyan-700 max-md:max-w-full">
-        <div className="flex justify-center items-center px-16 py-12 w-full max-md:px-5 max-md:max-w-full">
+      <section className="flex flex-col w-full pb-10 text-center bg-cyan-700 max-md:max-w-full">
+        <div className="flex items-center justify-center w-full px-16 py-12 max-md:px-5 max-md:max-w-full">
           <div className="flex flex-col w-full max-w-[1000px] max-md:max-w-full">
             <div className="flex flex-col text-slate-50 max-md:max-w-full">
               <h2 className="self-center text-2xl font-extrabold uppercase tracking-[3.6px] max-md:max-w-full">
                 Sertai Komuniti
               </h2>
               <p className="mt-5 text-lg max-md:max-w-full">
-                Sedia untuk menjadikan Tiara South satu tempat yang sejahtera dan damai? <br />{" "}
-                <br />
+                Sedia untuk menjadikan Tiara South satu tempat yang sejahtera
+                dan damai? <br /> <br />
                 Selamat Datang kepada semua pengunjung laman web Persatuan
                 Penduduk Tiara South, Semenyih. Di harap para pengunjung dapat
                 menggunakan wadah laman web ini sebagai satu medium penghubung
                 yang efektif di antara Persatuan ini dengan orang ramai.
               </p>
             </div>
-            <div className="flex flex-col justify-center self-center mt-10 w-48 max-w-full text-lg font-semibold text-cyan-700">
-              <button className="justify-center items-center px-8 py-2 rounded-xl shadow-sm bg-slate-50 max-md:px-5">
+            <div className="flex flex-col self-center justify-center w-48 max-w-full mt-10 text-lg font-semibold text-cyan-700">
+              <button className="items-center justify-center px-8 py-2 shadow-sm rounded-xl bg-slate-50 max-md:px-5">
                 Sertai Kami
               </button>
             </div>

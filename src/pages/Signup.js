@@ -1,25 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { FidgetSpinner } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
-const InputField = ({ label, type = "text", value, onChange }) => (
-  <div className="flex flex-col mt-8 text-base text-left whitespace-nowrap text-stone-500 max-md:max-w-full">
-    <label
-      htmlFor={label.toLowerCase()}
-      className="justify-center py-2 max-md:max-w-full"
-    >
-      {label}
-    </label>
-    <input
-      type={type}
-      id={label.toLowerCase()}
-      value={value} // Pass value here
-      onChange={onChange} // Pass onChange here
-      className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
-    />
-  </div>
-);
+// import { FidgetSpinner } from "react-loader-spinner";
 
 // const PasswordRequirement = ({ text }) => (
 //   <div className="flex justify-center gap-2 py-2">
@@ -31,7 +15,6 @@ const InputField = ({ label, type = "text", value, onChange }) => (
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [loading, setLoading] = useState(false); // State variable for loading
 
   const navigate = useNavigate();
 
@@ -49,17 +32,14 @@ function Signup() {
       password: password,
     };
 
-    // localStorage.setItem({email: "email"});
-    // localStorage.setItem({password: "password"});
-
-    axios.post("http://localhost:3001/auth", data).then((response) => {
+    axios.post("http://localhost:3001/auth/signup", data).then((response) => {
       try {
         console.log(response.data);
         if (response.data.error) {
           alert(response.data.error);
         } else {
-          alert("Successfully register, press OK to go to Login");
-          navigate("/login");
+          alert("Successfully register, press OK to go to Login Page");
+          navigate("/Login");
         }
       } catch (error) {
         console.log("Error Signing in: " + error);
@@ -77,20 +57,26 @@ function Signup() {
           <h1 className="text-3xl font-medium text-zinc-800">
             Welcome to Tiara South{" "}
           </h1>
-          <p className="justify-center p-0.5 text-base underline text-neutral-900">
-            <span className="text-zinc-800">Sudah berdaftar?</span>{" "}
-            <a href="Login" className="text-neutral-900">
-              Log in
-            </a>
-          </p>
         </div>
         <form>
-          <InputField
-            label="Email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+          <div className="flex flex-col mt-8 text-base text-left whitespace-nowrap text-stone-500 max-md:max-w-full">
+            <label
+              htmlFor="email"
+              className="justify-center py-2 max-md:max-w-full"
+            >
+              Alamat Emel
+            </label>
+            <input
+              type="email"
+              placeholder="example@gmail.com"
+              id="email"
+              onChange={(event) => {
+                setEmail(event.target.value);
+                console.log(event.target.value);
+              }} // Pass onChange here
+              className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
+            />
+          </div>
           <div className="flex flex-col mt-8 max-md:max-w-full">
             <div className="flex flex-col whitespace-nowrap">
               <div className="flex gap-5 py-0.5 pr-2.5 max-md:flex-wrap justify-between">
@@ -110,40 +96,63 @@ function Signup() {
               <input
                 type="password"
                 id="password"
+                placeholder="kata laluan"
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => {
+                 
+                  console.log(setPassword(event.target.value));
+                }}
                 className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
               />
             </div>
           </div>
-          <div className="flex gap-2 py-2 mt-8 mr-6 text-base text-zinc-800 max-md:flex-wrap max-md:mr-2.5">
+          <div className="flex py-2 mt-8 mr-6 text-base text-zinc-800 max-md:flex-wrap max-md:mr-2.5 text-left">
             <input
               className="pt-0"
               type="checkbox"
-              id="demoCheckbox"
-              name="checkbox"
-              value="1"
+              id="checkNews"
+              name="checkNews"
+              value={0}
             ></input>{" "}
-            <p className="max-md:max-w-full">
+            <p className="px-4 text-nowrap max-md:max-w-full ">
               I want to receive emails about the product, feature updates,
               events, and marketing promotions.
             </p>
           </div>
-          <p className="justify-center py-2 mt-8 text-base underline text-neutral-900 max-md:max-w-full">
-            <span className="text-zinc-800">
-              By creating an account, you agree to the{" "}
-            </span>
-            <a href="#" className="underline text-neutral-900">
-              Terms of use
-            </a>{" "}
-            <span className="text-zinc-800">and</span>{" "}
-            <a href="#" className="underline text-neutral-900">
-              Privacy Policy.
-            </a>{" "}
-          </p>
-          <div className="flex flex-col justify-center w-64 max-w-full mx-auto mt-8 text-2xl font-medium text-center text-white">
-            <button onClick={signup} className="flex flex-col justify-center px-8 py-4 bg-neutral-900 rounded-[16px] max-md:px-5 hover:underline">
-              <span className="justify-center text-nowrap">
+          <div className="flex justify-center py-2 text-base text-neutral-900 max-md:max-w-full">
+            <input
+              className="pt-0"
+              type="checkbox"
+              id="checkPolicy"
+              name="checkPolicy"
+              value={0}
+            ></input>
+            <div className="w-full px-4 text-left">
+              <span className="text-zinc-800">
+                By creating an account, you agree to the{" "}
+              </span>
+              <a href="#" className="underline text-neutral-900">
+                Terms of use
+              </a>{" "}
+              <span className="text-zinc-800">and</span>{" "}
+              <a href="#" className="underline text-neutral-900">
+                Privacy Policy.
+              </a>{" "}
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-center w-64 max-w-full mx-auto my-6 font-medium text-center text-white xt-2xl">
+            <p className="justify-center p-0.5 text-base underline text-neutral-900">
+              <span className="text-zinc-800">Sudah berdaftar?</span>{" "}
+              <Link to="/Login" className="text-neutral-900">
+                Log Masuk
+              </Link>
+            </p>
+            <button
+              onClick={signup}
+              className="flex flex-col justify-center px-8 py-4 bg-neutral-900 rounded-[16px] max-md:px-5 hover:underline "
+            >
+              <span className="w-full text-center text-nowrap">
                 Create an account
               </span>
             </button>

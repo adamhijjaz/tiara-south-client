@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {  } from " const navigate = useNavigate();";
 import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -12,6 +13,24 @@ import Aduan from "./pages/Aduan";
 import Direktori from "./pages/Direktori";
 
 function App() {
+
+  const [authState, setAuthState] = useState({
+    email: "",
+    id: 0,
+    status: false,
+  });
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    console.log("Successfully Clear Token");
+    setAuthState({
+      email: "",
+      id: 0,
+      status: false,
+    });
+    window.href.location = "/";
+  };
+
   const NavItem = ({ text }) => (
     <div className="text-lg hover:bg-slate-300 hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
       {text}
@@ -26,41 +45,30 @@ function App() {
     // { to: "/Aduan", text: "Ruang Aduan" },
     // { to: "/Direktori", text: "Direktori Servis" },
     { to: "/Customersvc", text: "Khidmat Pelanggan" },
-    { to: "/login", text: "Log Masuk" },
+    // { to: "/login", text: "Log Masuk" },
   ];
-  
-  
+
   const NavItems = () => (
     <nav className="flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
       {navLinks.map((link, index) => (
         <Link key={index} to={link.to}>
           <NavItem text={link.text} />
         </Link>
-        
       ))}
+      <Link onClick={()=>{
+        if (Response.accesToken) {
+          logout();
+        }
+        else{
+          window.href.location="/Login";
+        }
+      }}>
+        <div className="text-lg hover:bg-slate-300 hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
+          {Response.accesToken ? "Log Masuk" : "Log Keluar"}
+        </div>
+      </Link>
     </nav>
   );
-  
-
-  let accestoken = false;
-
-  useEffect(() => {
-    const checkAccessToken = async () => {
-      try {
-        const response = await axios.get("http://localhost:3001/auth/auth", {
-          // headers: {
-          //   accessToken: localStorage.getItem("accessToken"),
-          // },
-        });
-        console.log("User is authenticated:", response.data);
-      } catch (e) {
-        // console.error("User is not Authenticated: ", e);
-      }
-    };
-
-    // Call the function to check accessToken
-    // checkAccessToken();
-  }, []);
 
   return (
     <div className="App">

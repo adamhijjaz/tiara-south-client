@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,14 +11,14 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const login = (event) => {
+  const login = () => {
     const data = {
       email: email,
       password: password,
     };
 
     axios
-      .post("http://localhost:3001/auth", data)
+      .post("http://localhost:3001/auth/login", data)
       .then((resp) => {
         console.log("Reponse: ", resp.data);
 
@@ -25,12 +26,12 @@ function Login() {
           alert("Error di Login : " + resp.data.error);
         } else {
           localStorage.setItem("accessToken", resp.data.token);
-
-          // setAuthState({
-          //   email: resp.data.email,
-          //   id: resp.data.id,
-          //   status: true,
-          // });
+          console.log(resp.data.token);
+          setAuthState({
+            email: resp.data.email,
+            id: resp.data.id,
+            status: true,
+          });
           navigate("/");
         }
       })
@@ -40,8 +41,8 @@ function Login() {
   };
 
   function checkfield() {
-    if (!email && !password) {
-      alert("Please fill Email and Password");
+    if (!email || !password) {
+      alert("Sila Isi Emel dan kata laluan anda");
     } else {
       login();
     }
@@ -99,6 +100,9 @@ function Login() {
                     placeholder="example@gmail.com"
                     type="email"
                     id="email"
+                    onChange={(event)=>{
+                      setEmail(event.target.value)
+                    }}
                     className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
                   />
                 </div>
@@ -133,12 +137,12 @@ function Login() {
                       }}
                     />
                   </div>
-                  <a
-                    href="#"
+                  <Link
+                    onClick={()=>{alert("No Implementation, If you forget Please Login or Register Again")}}
                     className="self-end mt-2 text-base text-right underline text-neutral-900"
                   >
                     Lupa Kata Laluan
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex flex-col justify-center items-center mt-5 max-w-full w-[304px]">
                   <div className="w-full">
@@ -152,15 +156,21 @@ function Login() {
                     </button>
                   </div>
                   <div className="w-full">
-                    <button
-                      navigate="/Signup"
-                      className="flex justify-center p-0.5 mt-2 text-base underline text-neutral-900"
-                    >
+                    <div className="flex justify-center p-0.5 mt-2 text-base underline text-neutral-900">
                       <p className="underline text-zinc-800">
                         Tidak mempunyai akaun?,
                       </p>
-                      <p className=" text-neutral-900"> Daftar Masuk</p>
-                    </button>
+                      <Link
+                        to="/Signup"
+                        onClick={() => {
+                          console.log("Clicked Sign Up");
+                        }}
+                        className=" text-neutral-900"
+                      >
+                        {" "}
+                        Daftar Masuk
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </form>
