@@ -31,13 +31,13 @@ function Signup() {
       username: username,
       email: email,
       password: password,
-    };
+    };  
 
     axios.post("http://localhost:3001/auth/signup", data).then((response) => {
       try {
         console.log(response.data);
         if (response.data.error) {
-          alert(response.data.error);
+          alert("Error loggin ",response.data.error);
         } else {
           alert("Anda telah berjaya mendaftar. tekan OK untuk ke Halaman Log Masuk");
         }
@@ -69,12 +69,12 @@ function Signup() {
               Nama Pengguna 
             </label>
             <input
-              type="username"
+              type="text"
               placeholder="Nama"
               id="username"
               onChange={(event) => {
                 setUsername(event.target.value);
-                console.log(event.target.value);
+                console.log(setUsername(event.target.value));
               }} // Pass onChange here
               className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
             />
@@ -92,7 +92,7 @@ function Signup() {
               id="email"
               onChange={(event) => {
                 setEmail(event.target.value);
-                console.log(event.target.value);
+                console.log(setEmail(event.target.value));
               }} // Pass onChange here
               className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
             />
