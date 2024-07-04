@@ -6,7 +6,7 @@ const NewsCard = ({ imageSrc, title, description }) => (
       loading="lazy"
       src={imageSrc}
       alt={title}
-      className="w-full aspect-[1.18] max-md:max-w-full"
+      className="w-full aspect-[1.18] max-md:max-w-full rounded-tr-3xl rounded-bl-3xl"
     />
     <div className="flex flex-col mt-5 max-md:max-w-full">
       <h3 className="text-2xl font-semibold max-md:max-w-full">{title}</h3>
@@ -18,24 +18,24 @@ const NewsCard = ({ imageSrc, title, description }) => (
 const newsItems = [
   {
     imageSrc:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
+      "/parking.png",
+    title: "Parking",
     description:
-      "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery.",
+      "Isu parking di bahu jalan sering diperkatakan oleh penduduk taman oleh kerana penduduk perlu lebih berhati-hati untuk menggunakan laluan utama untuk ke jalan 3, 4 dan 5.",
   },
   {
     imageSrc:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
+      "/monyet.png",
+    title: "Monyet",
     description:
-      "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery.",
+      "Masalah monyet menceroboh masuk taman Tiara South juga menjadi bualan hangat dalam kalangan penduduk. Oleh itu, beberapa inisiatif perlu diambil demi keselesaan penduduk.",
   },
   {
     imageSrc:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/2c49f9bee7186d639b6804e4e6b04485cf324e19973a5ebddec9d849b5a091f8?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Magical Creatures",
+      "/sampah.png",
+    title: "Sampah",
     description:
-      "Magical Creatures: Encounter mythical beings and fantastical creatures in Luna's imaginative character designs. From elegant faeries and wise wizards to majestic dragons and mischievous sprites, Luna's creations breathe life into legends and folklore.",
+      "Penduduk Tiara South sering membuang sampah bukan pada tempat yang ditetapkan sedangkan tong sampah sudah disediakan di setiap unit rumah. Malahan, terdapat jugak unit yang mengalihkan tong sampah mereka ke tempat kerja mereka untuk kegunaan sendiri.",
   }
 ];
 
