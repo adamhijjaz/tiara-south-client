@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
-import axios from 'axios';
-import { AuthContext } from '../helpers/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../helpers/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const {setAuthState } = useContext(AuthContext); // Ensure correct destructuring
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setAuthState } = useContext(AuthContext); // Ensure correct destructuring
   const navigate = useNavigate();
 
   const login = async () => {
@@ -16,30 +16,33 @@ function Login() {
     };
 
     try {
-      const response = await axios.post('http://localhost:3001/auth/login', data);
+      const response = await axios.post(
+        "http://localhost:3001/auth/login",
+        data
+      );
 
       if (!response.data.error) {
-        localStorage.setItem('accessToken', response.data.token);
+        localStorage.setItem("accessToken", response.data.token);
         setAuthState({
           username: response.data.username,
           email: response.data.email,
           id: response.data.id,
           status: true,
         });
-        alert('Log Masuk berjaya! ' + response.data.username);
-        navigate('/');
+        alert("Log Masuk berjaya! " + response.data.username);
+        navigate("/");
       } else {
-        alert('Log Masuk tidak berjaya: ' + response.data.error);
+        alert("Log Masuk tidak berjaya: " + response.data.error);
       }
     } catch (error) {
-      alert('Error during login process. Please try again.');
-      console.error('Error in Signing in:', error);
+      alert("Error during login process. Please try again.");
+      console.error("Error in Signing in:", error);
     }
   };
 
   const checkfield = () => {
     if (!email || !password) {
-      alert('Sila Isi Emel dan kata laluan anda');
+      alert("Sila Isi Emel dan kata laluan anda");
     } else {
       login();
     }

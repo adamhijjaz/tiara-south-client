@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -10,32 +10,20 @@ import Latar from "./pages/Latar";
 import Program from "./pages/Program";
 import Aduan from "./pages/Aduan";
 import Direktori from "./pages/Direktori";
-
-let aT = localStorage.getItem("accessToken");
+import { AuthContext } from "./helpers/AuthContext";
 
 function App() {
-  // const [modalShow, setModalShow] = useState(false);
-  const [authState, setAuthState] = useState({
-    email: "",
-    id: 0,
-    status: false,
-  });
-
-  const checkAccessToken = () => {
-    console.log("Access Token: ", aT);
-  };
+  const { authState, setAuthState } = useContext(AuthContext);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    console.log("Successfully Clear Token");
     setAuthState({
       email: "",
       id: 0,
       status: false,
     });
     alert("Anda telah berjaya mendaftar keluar.");
-    window.location.reload();
-    checkAccessToken();
+    window.location.href = "/Login"; // Redirect to the login page
   };
 
   const NavItem = ({ text }) => (
@@ -47,33 +35,28 @@ function App() {
   const navLinks = [
     { to: "/Berita", text: "Berita Terkini" },
     { to: "/Latar", text: "Latar Belakang" },
-    // { to: "/", text: "Carta Organisasi" },
     { to: "/Program", text: "Program" },
     { to: "/Aduan", text: "Ruang Aduan" },
-    // { to: "/Direktori", text: "Direktori Servis" },
     { to: "/Customersvc", text: "Khidmat Pelanggan" },
-    // { to: "/login", text: "Log Masuk" },
   ];
 
   const NavItems = () => (
     <nav className="sticky top-0 flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
       {navLinks.map((link, index) => (
-        <Link key={index} to={aT ? link.to : "/"} >
+        <Link key={index} to={authState.status ? link.to : "/"}>
           <NavItem text={link.text} />
         </Link>
       ))}
       <Link
-        to={aT ? "/" : "/Login"}
+        to={authState.status ? "/" : "/Login"}
         onClick={() => {
-          if (aT) {
-            console.log("Click Logout");
+          if (authState.status) {
             logout();
-            window.location.href="/login"
-          } 
+          }
         }}
       >
         <div className="text-lg hover:bg-slate-300 hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
-          {aT == null ? "Log Masuk" : "Log Keluar"}
+          {authState.status ? "Log Keluar" : "Log Masuk"}
         </div>
       </Link>
     </nav>
