@@ -58,7 +58,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <footer className="justify-center items-center py-7 pr-16 pl-20 mt-32 w-full text-xl font-semibold leading-7 text-white uppercase bg-cyan-700 tracking-[2px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+      <footer className="justify-center items-center py-7 pr-16 pl-20 mt-32 w-full text-md font-semibold leading-7 text-white uppercase bg-cyan-700 tracking-[2px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
         <span className="text-white">Hakcipta 2024 © TiaraSouth.com</span>
       </footer>
     </div>

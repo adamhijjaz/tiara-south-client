@@ -27,8 +27,8 @@ function App() {
   };
 
   const NavItem = ({ text }) => (
-    <div className="text-lg hover:bg-slate-300 hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
-      {text}
+    <div className="flex justify-center w-full items-center text-lg hover:bg-slate-300 h-full hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
+      <div>{text}</div>
     </div>
   );
 
@@ -41,13 +41,18 @@ function App() {
   ];
 
   const NavItems = () => (
-    <nav className="sticky top-0 flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
+    <nav className="sticky top-0 flex self-stretch justify-between h-full gap-5 max-md:flex-wrap max-md:mt-10 ">
       {navLinks.map((link, index) => (
-        <Link key={index} to={authState.status ? link.to : "/"}>
+        <Link
+          key={index}
+          to={authState.status ? link.to : "/"}
+          className="w-full"
+        >
           <NavItem text={link.text} />
         </Link>
       ))}
       <Link
+        className="w-full h-full"
         to={authState.status ? "/" : "/Login"}
         onClick={() => {
           if (authState.status) {
@@ -55,8 +60,8 @@ function App() {
           }
         }}
       >
-        <div className="text-lg hover:bg-slate-300 hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
-          {authState.status ? "Log Keluar" : "Log Masuk"}
+        <div className="flex items-center justify-between w-full h-full text-lg font-semibold text-white duration-300 rounded-lg hover:bg-slate-950 hover:shadow-md text-nowrap bg-slate-700">
+          <div className="mx-auto">{authState.status ? "Log Keluar" : "Log Masuk"}</div>
         </div>
       </Link>
     </nav>
@@ -66,8 +71,8 @@ function App() {
     <div className="App">
       <Router>
         <div className="relative flex flex-col bg-white ">
-          <header className="justify-between w-full p-8 bg-slate-100 max-md:px-5 max-md:max-w-full">
-            <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+          <header className="justify-between w-full p-4 bg-slate-100 max-md:px-5 max-md:max-w-full">
+            <div className="flex h-full gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[16%] max-md:ml-0 max-md:w-full">
                 <div className="flex grow gap-3 justify-center px-2.5 py-px text-2xl font-semibold text-center whitespace-nowrap text-cyan-950 max-md:mt-10">
                   <img
@@ -81,7 +86,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col ml-5 w-[84%] max-md:ml-0 max-md:w-full">
+              <div className="flex flex-col w-full ml-5 max-md:ml-0 max-md:w-full">
                 <NavItems />
               </div>
             </div>
