@@ -73,7 +73,7 @@ function Signup() {
               placeholder="Nama"
               id="username"
               onChange={(event) => {
-                // setEmail(event.target.value);
+                setUsername(event.target.value);
                 console.log(event.target.value);
               }} // Pass onChange here
               className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
@@ -91,7 +91,7 @@ function Signup() {
               placeholder="example@gmail.com"
               id="email"
               onChange={(event) => {
-                setUsername(event.target.value);
+                setEmail(event.target.value);
                 console.log(event.target.value);
               }} // Pass onChange here
               className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
