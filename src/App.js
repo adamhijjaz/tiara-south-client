@@ -14,7 +14,7 @@ import Direktori from "./pages/Direktori";
 let aT = localStorage.getItem("accessToken");
 
 function App() {
-  const [modalShow, setModalShow] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
   const [authState, setAuthState] = useState({
     email: "",
     id: 0,

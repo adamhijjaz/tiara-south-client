@@ -1,56 +1,49 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
-import { AuthContext } from "../helpers/AuthContext";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../helpers/AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { authState, setAuthState } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const {setAuthState } = useContext(AuthContext); // Ensure correct destructuring
+  const navigate = useNavigate();
 
-  // let aT = localStorage.getItem("accesToken");
-
-  const login = () => {
+  const login = async () => {
     const data = {
-      // username: username,
       email: email,
       password: password,
     };
 
-    axios
-      .post("http://localhost:3001/auth/login", data)
-      .then((resp) => {
-        if (!resp.data.error) {
-          localStorage.setItem("accessToken", resp.data.token);
-          console.log("Access Token created!");
-          setAuthState({
-            username:resp.data.username,
-            email: resp.data.email,
-            id: resp.data.id,
-            status: true,
-          });
-          alert("Log Masuk tidak berjaya " + username);
-          window.location.href = "/";
-        } else {
-          alert(resp.data.error);
-          console.log(resp.data.password.toString() +" 002");
-          console.log(password);
-        }
-      })
-      .catch((error) => {
-        alert("Log Masuk telah berjaya!. Anda telah mendaftar dengan " + username);
-        window.location.reload();
-      });
+    try {
+      const response = await axios.post('http://localhost:3001/auth/login', data);
+
+      if (!response.data.error) {
+        localStorage.setItem('accessToken', response.data.token);
+        setAuthState({
+          username: response.data.username,
+          email: response.data.email,
+          id: response.data.id,
+          status: true,
+        });
+        alert('Log Masuk berjaya! ' + response.data.username);
+        navigate('/');
+      } else {
+        alert('Log Masuk tidak berjaya: ' + response.data.error);
+      }
+    } catch (error) {
+      alert('Error during login process. Please try again.');
+      console.error('Error in Signing in:', error);
+    }
   };
 
-  function checkfield() {
+  const checkfield = () => {
     if (!email || !password) {
-      alert("Sila Isi Emel dan kata laluan anda");
+      alert('Sila Isi Emel dan kata laluan anda');
     } else {
       login();
     }
-  }
+  };
 
   return (
     <div className="bg-white">
@@ -92,7 +85,13 @@ function Login() {
               <h2 className="text-3xl font-medium text-left text-zinc-800 max-md:text-center max-md:max-w-full">
                 Log Masuk
               </h2>
-              <form className="flex flex-col p-2 mt-12 max-md:mt-10 max-md:max-w-full">
+              <form
+                className="flex flex-col p-2 mt-12 max-md:mt-10 max-md:max-w-full"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  checkfield();
+                }}
+              >
                 <div className="flex flex-col text-base text-stone-500 max-md:max-w-full">
                   <label
                     htmlFor="email"
@@ -119,7 +118,10 @@ function Login() {
                       >
                         Kata Laluan Anda
                       </label>
-                      <button className="flex gap-3 text-lg text-right whitespace-nowrap text-stone-500 text-opacity-80">
+                      <button
+                        type="button"
+                        className="flex gap-3 text-lg text-right whitespace-nowrap text-stone-500 text-opacity-80"
+                      >
                         <img
                           loading="lazy"
                           src="https://cdn.builder.io/api/v1/image/assets/TEMP/5140d1751deadb6ffe6ce71941c3fdb5f2023605350f9ec7903c30d5418e27aa?apiKey=03f5df226c30468fbf8fdf985b85fe26&"
@@ -154,15 +156,12 @@ function Login() {
                 </div>
                 <div className="flex flex-col justify-center items-center mt-5 max-w-full w-[304px]">
                   <div className="w-full">
-                    <Link
-                      // to={aT ? "#" : "/Login"}
-                      onClick={() => {
-                        checkfield();
-                      }}
+                    <button
+                      type="submit"
                       className="flex justify-center items-center px-16 py-4 text-xl text-center text-white bg-slate-700 rounded-[16px] max-md:px-5 w-full hover:bg-slate-950 transition-colors duration-700"
                     >
                       Log Masuk
-                    </Link>
+                    </button>
                   </div>
                   <div className="w-full">
                     <div className="flex justify-center p-0.5 mt-2 text-base underline text-neutral-900">
