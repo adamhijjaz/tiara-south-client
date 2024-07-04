@@ -49,7 +49,9 @@ function Home() {
               </p>
             </div>
             <div className="flex flex-col self-center justify-center w-48 max-w-full mt-10 text-lg font-semibold text-cyan-700">
-              <button className="items-center justify-center px-8 py-2 shadow-sm rounded-xl bg-slate-50 max-md:px-5">
+              <button onClick={()=>{
+                window.location.href = "/Signup"
+              }} className="items-center justify-center px-8 py-2 shadow-sm rounded-xl bg-slate-50 max-md:px-5">
                 Sertai Kami
               </button>
             </div>
