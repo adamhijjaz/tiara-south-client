@@ -56,7 +56,7 @@ function App() {
   ];
 
   const NavItems = () => (
-    <nav className="flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
+    <nav className="sticky top-0 flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
       {navLinks.map((link, index) => (
         <Link key={index} to={aT ? link.to : "/"} onClick={()=>{
           console.log("show Modal");
@@ -71,6 +71,7 @@ function App() {
           if (aT) {
             console.log("Click Logout");
             logout();
+            window.location.href="/login"
           } 
         }}
       >
@@ -84,7 +85,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="flex flex-col bg-white">
+        <div className="relative flex flex-col bg-white ">
           <header className="justify-between w-full p-8 bg-slate-100 max-md:px-5 max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[16%] max-md:ml-0 max-md:w-full">

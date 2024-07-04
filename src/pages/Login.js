@@ -156,7 +156,7 @@ function Login() {
                       onClick={() => {
                         checkfield();
                       }}
-                      className="flex justify-center items-center px-16 py-4 text-xl text-center text-white bg-neutral-900 rounded-[16px] max-md:px-5 w-full hover:underline"
+                      className="flex justify-center items-center px-16 py-4 text-xl text-center text-white bg-slate-700 rounded-[16px] max-md:px-5 w-full hover:bg-slate-950 transition-colors duration-700"
                     >
                       Log Masuk
                     </Link>

@@ -144,7 +144,7 @@ function Signup() {
           <div className="flex flex-col justify-center w-64 max-w-full mx-auto my-6 text-xl font-medium text-center text-white gap-y-8">
             <button
               onClick={signup}
-              className="flex flex-col justify-center px-8 py-4 bg-blue-900 rounded-[16px] max-md:px-5 hover:underline hover:bg-blue-600 transition-colors "
+              className="flex flex-col justify-center px-8 py-4 bg-slate-700 rounded-[16px] max-md:px-5 hover:bg-slate-950 transition-colors duration-500"
             >
               <span className="w-full text-center text-nowrap">
                 Create an account
