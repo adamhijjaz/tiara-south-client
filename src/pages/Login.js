@@ -30,7 +30,7 @@ function Login() {
             id: resp.data.id,
             status: true,
           });
-          alert("Log Masuk tidak berjaya " + username , error);
+          alert("Log Masuk tidak berjaya " + username);
           window.location.href = "/";
         } else {
           alert(resp.data.error);
