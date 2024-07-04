@@ -16,7 +16,6 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
 
   const signup = (event) => {
     // event.preventDefault(); // Prevent default form submission behavior
@@ -38,11 +37,12 @@ function Signup() {
         if (response.data.error) {
           alert(response.data.error);
         } else {
-          alert("Successfully register, press OK to go to Login Page");
-          navigate("/Login");
+          alert("Anda telah berjaya mendaftar. tekan OK untuk ke Halaman Log Masuk");
         }
+        window.location.href = "/Login"
       } catch (error) {
-        console.log("Error Signing in: " + error);
+        alert("Maklumat telah dihantar ke pangkalan data.")
+        console.error("Error in Signing in : ", error);
       }
     });
   };
@@ -81,7 +81,7 @@ function Signup() {
             <div className="flex flex-col whitespace-nowrap">
               <div className="flex gap-5 py-0.5 pr-2.5 max-md:flex-wrap justify-between">
                 <div htmlFor="password" className="text-base text-stone-500">
-                  Password
+                  Kata Laluan Anda
                 </div>
                 <button className="flex gap-3 text-lg text-right text-stone-500 text-opacity-80">
                   <img
@@ -106,7 +106,7 @@ function Signup() {
               />
             </div>
           </div>
-          <div className="flex py-2 mt-8 mr-6 text-base text-zinc-800 max-md:flex-wrap max-md:mr-2.5 text-left">
+          {/* <div className="flex py-2 mt-8 mr-6 text-base text-zinc-800 max-md:flex-wrap max-md:mr-2.5 text-left">
             <input
               className="pt-0"
               type="checkbox"
@@ -139,23 +139,23 @@ function Signup() {
                 Privacy Policy.
               </a>{" "}
             </div>
-          </div>
+          </div> */}
 
-          <div className="flex flex-col justify-center w-64 max-w-full mx-auto my-6 font-medium text-center text-white xt-2xl">
+          <div className="flex flex-col justify-center w-64 max-w-full mx-auto my-6 text-xl font-medium text-center text-white gap-y-8">
+            <button
+              onClick={signup}
+              className="flex flex-col justify-center px-8 py-4 bg-blue-900 rounded-[16px] max-md:px-5 hover:underline hover:bg-blue-600 transition-colors "
+            >
+              <span className="w-full text-center text-nowrap">
+                Create an account
+              </span>
+            </button>
             <p className="justify-center p-0.5 text-base underline text-neutral-900">
               <span className="text-zinc-800">Sudah berdaftar?</span>{" "}
               <Link to="/Login" className="text-neutral-900">
                 Log Masuk
               </Link>
             </p>
-            <button
-              onClick={signup}
-              className="flex flex-col justify-center px-8 py-4 bg-neutral-900 rounded-[16px] max-md:px-5 hover:underline "
-            >
-              <span className="w-full text-center text-nowrap">
-                Create an account
-              </span>
-            </button>
           </div>
         </form>
       </section>

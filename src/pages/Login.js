@@ -11,6 +11,8 @@ function Login() {
 
   const navigate = useNavigate();
 
+  // let aT = localStorage.getItem("accesToken");
+
   const login = () => {
     const data = {
       email: email,
@@ -20,23 +22,22 @@ function Login() {
     axios
       .post("http://localhost:3001/auth/login", data)
       .then((resp) => {
-        console.log("Reponse: ", resp.data);
-
         if (resp.data.error) {
           alert("Error di Login : " + resp.data.error);
         } else {
           localStorage.setItem("accessToken", resp.data.token);
-          console.log(resp.data.token);
           setAuthState({
             email: resp.data.email,
             id: resp.data.id,
             status: true,
           });
-          navigate("/");
+          window.location.href="/";
         }
       })
       .catch((error) => {
-        console.error("Error logging in: ", error);
+        alert("Anda telah mendaftar dengan "+ email);
+        window.location.href="/";
+
       });
   };
 
@@ -100,8 +101,8 @@ function Login() {
                     placeholder="example@gmail.com"
                     type="email"
                     id="email"
-                    onChange={(event)=>{
-                      setEmail(event.target.value)
+                    onChange={(event) => {
+                      setEmail(event.target.value);
                     }}
                     className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
                   />
@@ -138,7 +139,11 @@ function Login() {
                     />
                   </div>
                   <Link
-                    onClick={()=>{alert("No Implementation, If you forget Please Login or Register Again")}}
+                    onClick={() => {
+                      alert(
+                        "No Implementation, If you forget Please Login or Register Again"
+                      );
+                    }}
                     className="self-end mt-2 text-base text-right underline text-neutral-900"
                   >
                     Lupa Kata Laluan
@@ -146,14 +151,15 @@ function Login() {
                 </div>
                 <div className="flex flex-col justify-center items-center mt-5 max-w-full w-[304px]">
                   <div className="w-full">
-                    <button
+                    <Link
+                      // to={aT ? "#" : "/Login"}
                       onClick={() => {
                         checkfield();
                       }}
                       className="flex justify-center items-center px-16 py-4 text-xl text-center text-white bg-neutral-900 rounded-[16px] max-md:px-5 w-full hover:underline"
                     >
                       Log Masuk
-                    </button>
+                    </Link>
                   </div>
                   <div className="w-full">
                     <div className="flex justify-center p-0.5 mt-2 text-base underline text-neutral-900">

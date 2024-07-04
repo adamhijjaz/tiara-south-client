@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {  } from " const navigate = useNavigate();";
 import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -12,13 +11,19 @@ import Program from "./pages/Program";
 import Aduan from "./pages/Aduan";
 import Direktori from "./pages/Direktori";
 
-function App() {
+let aT = localStorage.getItem("accessToken");
 
+function App() {
+  const [modalShow, setModalShow] = useState(false);
   const [authState, setAuthState] = useState({
     email: "",
     id: 0,
     status: false,
   });
+
+  const checkAccessToken = () => {
+    console.log("Access Token: ", aT);
+  };
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -28,7 +33,9 @@ function App() {
       id: 0,
       status: false,
     });
-    window.href.location = "/";
+    alert("Anda telah berjaya mendaftar keluar.");
+    window.location.reload();
+    checkAccessToken();
   };
 
   const NavItem = ({ text }) => (
@@ -51,20 +58,24 @@ function App() {
   const NavItems = () => (
     <nav className="flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
       {navLinks.map((link, index) => (
-        <Link key={index} to={link.to}>
+        <Link key={index} to={aT ? link.to : "/"} onClick={()=>{
+          console.log("show Modal");
+            setModalShow(true);
+        }}>
           <NavItem text={link.text} />
         </Link>
       ))}
-      <Link onClick={()=>{
-        if (Response.accesToken) {
-          logout();
-        }
-        else{
-          window.href.location="/Login";
-        }
-      }}>
+      <Link
+        to={aT ? "/" : "/Login"}
+        onClick={() => {
+          if (aT) {
+            console.log("Click Logout");
+            logout();
+          } 
+        }}
+      >
         <div className="text-lg hover:bg-slate-300 hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
-          {Response.accesToken ? "Log Masuk" : "Log Keluar"}
+          {aT == null ? "Log Masuk" : "Log Keluar"}
         </div>
       </Link>
     </nav>
