@@ -47,9 +47,9 @@ function App() {
   const navLinks = [
     { to: "/Berita", text: "Berita Terkini" },
     { to: "/Latar", text: "Latar Belakang" },
-    { to: "/", text: "Carta Organisasi" },
+    // { to: "/", text: "Carta Organisasi" },
     { to: "/Program", text: "Program" },
-    // { to: "/Aduan", text: "Ruang Aduan" },
+    { to: "/Aduan", text: "Ruang Aduan" },
     // { to: "/Direktori", text: "Direktori Servis" },
     { to: "/Customersvc", text: "Khidmat Pelanggan" },
     // { to: "/login", text: "Log Masuk" },
