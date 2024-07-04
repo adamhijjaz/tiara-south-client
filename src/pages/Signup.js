@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
 
@@ -21,12 +22,13 @@ function Signup() {
     // event.preventDefault(); // Prevent default form submission behavior
 
     // Check if any of the fields are empty
-    if (!email || !password) {
+    if (!email || !password|| !username) {
       alert("Please fill out all the fields.");
       return; // Exit the function early if any field is empty
     }
 
     const data = {
+      username: username,
       email: email,
       password: password,
     };
@@ -61,6 +63,24 @@ function Signup() {
         <form>
           <div className="flex flex-col mt-8 text-base text-left whitespace-nowrap text-stone-500 max-md:max-w-full">
             <label
+              htmlFor="uername"
+              className="justify-center py-2 max-md:max-w-full"
+            >
+              Nama Pengguna 
+            </label>
+            <input
+              type="username"
+              placeholder="Nama"
+              id="username"
+              onChange={(event) => {
+                // setEmail(event.target.value);
+                console.log(event.target.value);
+              }} // Pass onChange here
+              className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
+            />
+          </div>
+          <div className="flex flex-col mt-8 text-base text-left whitespace-nowrap text-stone-500 max-md:max-w-full">
+            <label
               htmlFor="email"
               className="justify-center py-2 max-md:max-w-full"
             >
@@ -71,7 +91,7 @@ function Signup() {
               placeholder="example@gmail.com"
               id="email"
               onChange={(event) => {
-                setEmail(event.target.value);
+                setUsername(event.target.value);
                 console.log(event.target.value);
               }} // Pass onChange here
               className="p-2 mt-1 border border-solid shrink-0 h-14 rounded-xl border-stone-500 border-opacity-30 max-md:max-w-full"
