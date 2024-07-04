@@ -4,15 +4,16 @@ import { AuthContext } from "../helpers/AuthContext";
 import { Link } from "react-router-dom";
 
 function Login() {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthState } = useContext(AuthContext);
-
+  const { authState, setAuthState } = useContext(AuthContext);
 
   // let aT = localStorage.getItem("accesToken");
 
   const login = () => {
     const data = {
+      // username: username,
       email: email,
       password: password,
     };
@@ -20,22 +21,26 @@ function Login() {
     axios
       .post("http://localhost:3001/auth/login", data)
       .then((resp) => {
-        if (resp.data.error) {
-          alert("Error di Login : " + resp.data.error);
-        } else {
+        if (!resp.data.error) {
           localStorage.setItem("accessToken", resp.data.token);
+          console.log("Access Token created!");
           setAuthState({
+            username:resp.data.username,
             email: resp.data.email,
             id: resp.data.id,
             status: true,
           });
-          window.location.href="/";
+          alert("Log Masuk tidak berjaya " + username , error);
+          window.location.href = "/";
+        } else {
+          alert(resp.data.error);
+          console.log(resp.data.password.toString() +" 002");
+          console.log(password);
         }
       })
       .catch((error) => {
-        alert("Anda telah mendaftar dengan "+ email);
-        window.location.href="/";
-
+        alert("Log Masuk telah berjaya!. Anda telah mendaftar dengan " + username);
+        window.location.reload();
       });
   };
 

@@ -58,10 +58,7 @@ function App() {
   const NavItems = () => (
     <nav className="sticky top-0 flex self-stretch justify-between gap-5 my-auto max-md:flex-wrap max-md:mt-10">
       {navLinks.map((link, index) => (
-        <Link key={index} to={aT ? link.to : "/"} onClick={()=>{
-          console.log("show Modal");
-            setModalShow(true);
-        }}>
+        <Link key={index} to={aT ? link.to : "/"} >
           <NavItem text={link.text} />
         </Link>
       ))}
