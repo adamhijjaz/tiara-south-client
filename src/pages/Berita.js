@@ -60,7 +60,7 @@ function Berita() {
           Berita Terkini
         </h1>
         <section className="flex flex-col mt-10 max-md:max-w-full">
-          <div className="flex flex-col justify-center p-10 rounded-none bg-cyan-700 bg-opacity-10 max-md:px-5 max-md:max-w-full">
+          <div className="flex flex-col justify-center p-10 border shadow-xl border-opacity-40 border-cyan-700 bg-cyan-700 bg-opacity-10 max-md:px-5 max-md:max-w-full rounded-xl">
             <div className="max-md:max-w-full">
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                 {displayedItems.map((item, index) => (

@@ -23,12 +23,12 @@ function Home() {
 
   return (
     <div className="flex flex-col bg-white">
-      <section className="flex overflow-hidden relative flex-col justify-center items-center px-16 pt-16 pb-24 w-full text-8xl font-bold text-center text-white backdrop-blur-[2px] min-h-[322px] tracking-[7.68px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
+      <section className="flex overflow-hidden relative flex-col justify-center items-center px-16 pt-16 pb-24 w-full text-8xl font-bold text-center text-white backdrop-blur-[2px] min-h-[322px] tracking-[8px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
         <img
           loading="lazy"
           src="https://png.pngtree.com/background/20230424/original/pngtree-an-aerial-view-of-residential-buildings-with-green-roofs-picture-image_2462208.jpg"
           alt=""
-          className="absolute inset-0 object-cover size-full"
+          className="absolute z-[-2] inset-0 object-cover size-full"
         />
         PERSATUAN PENDUDUK <br /> TIARA SOUTH
       </section>

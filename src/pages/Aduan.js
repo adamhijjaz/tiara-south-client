@@ -91,6 +91,9 @@ function Aduan() {
               Hantar
             </button>
           </form>
+          <button className="w-1/4 p-4 font-bold text-white duration-500 rounded-lg hover:shadow-xl bg-slate-700 hover:bg-slate-950 text-md">
+            Hantar
+          </button>
         </section>
       </main>
       <footer className="justify-center items-center py-7 pr-16 pl-20 mt-28 w-full text-xl font-semibold leading-7 text-white uppercase bg-cyan-700 tracking-[2px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
