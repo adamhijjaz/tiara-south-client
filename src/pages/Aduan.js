@@ -27,7 +27,7 @@ function Aduan() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/complaints", {
+      const response = await axios.post("https://tiarasouth.onrender.com/complaints", {
         username: name,
         subject: subject,
         aduan: complaint,
