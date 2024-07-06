@@ -75,9 +75,8 @@ function Login() {
                 </div>
               </div>
               <p className="mt-4 text-2xl max-md:max-w-full">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                lobortis maximus nunc, ac rhoncus odio congue quis. Sed ac
-                semper orci, eu porttitor lacus.
+              Selamat Datang kepada semua pengunjung laman web Persatuan
+              Penduduk Tiara South, Semenyih.
               </p>
             </div>
           </div>

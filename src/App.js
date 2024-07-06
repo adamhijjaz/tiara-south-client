@@ -8,6 +8,7 @@ import Berita from "./pages/Berita";
 import Latar from "./pages/Latar";
 import Program from "./pages/Program";
 import Aduan from "./pages/Aduan";
+import Carta from "./pages/Carta";
 import Direktori from "./pages/Direktori";
 import { AuthContext } from "./helpers/AuthContext";
 
@@ -78,6 +79,11 @@ function App() {
                 Ruang Aduan
               </button>
             </Link>
+            {/* <Link to={authState.status ? "/hubungi" : "/"}>
+              <button className="block px-4 py-2 text-white hover:bg-[#8094b0] w-full text-left rounded-lg shadow-lg">
+                Hubungi Kami
+              </button>
+            </Link> */}
             <Link to={authState.status ? "/Direktori" : "/"}>
               <button className="block px-4 py-2 text-white hover:bg-[#8094b0] w-full text-left rounded-lg shadow-lg">
                 Direktori Servis
@@ -159,6 +165,7 @@ function App() {
           <Route path="/Latar" exact Component={Latar} />
           <Route path="/Program" exact Component={Program} />
           <Route path="/Aduan" exact Component={Aduan} />
+          <Route path="/Carta" exact Component={Carta} />
           <Route path="/Direktori" exact Component={Direktori} />
         </Routes>
       </Router>

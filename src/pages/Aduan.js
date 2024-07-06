@@ -67,7 +67,7 @@ function Aduan() {
               label="Name"
               id="name"
               value={authState.username}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(authState.username)}
               className="cursor-not-allowed pointer-events-none"
               disabled={true}
             />
