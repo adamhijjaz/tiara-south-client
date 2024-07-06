@@ -12,56 +12,27 @@ const NewsCard = ({ imageSrc, title, description }) => (
 
 const newsItems = [
   {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
+    imageSrc: "/gotongroyong.jpg",
+    title: "Gotong Royong",
+    description: "Aktiviti gotong royong merupakam aktiviti tahunan penduduk Tiara South demi menjaga keamanan taman. Aktiviti ini merangkumi menebas pokok bagi mengelakkan pencerobohan monyet, memasang perangkap ular dan membersihkan kawasan taman."
   },
   {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/2c49f9bee7186d639b6804e4e6b04485cf324e19973a5ebddec9d849b5a091f8?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Magical Creatures",
-    description: "Magical Creatures: Encounter mythical beings and fantastical creatures in Luna's imaginative character designs. From elegant faeries and wise wizards to majestic dragons and mischievous sprites, Luna's creations breathe life into legends and folklore."
+    imageSrc: "/perkhemahan.jpg",
+    title: "Perkhemahan",
+    description: "Aktiviti ini kebiasaannya dijalankan di rumah kelab Tiara South di mana ia mengumpulkan penduduk-penduduk Tiara South sebagai tanda keharmonian taman."
   },
   {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
+    imageSrc: "/senamrobik.jpg",
+    title: "Senam Robik",
+    description: "Perkhemahan atau lebih dikenali sebagai “camping” diwujudkan bagi memberi pengalaman kemahiran hidup di kawasan hutan kepada ahli yang berminat."
   },
   {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/2c49f9bee7186d639b6804e4e6b04485cf324e19973a5ebddec9d849b5a091f8?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Magical Beasts",
-    description: "Magical Creatures: Encounter mythical beings and fantastical creatures in Luna's imaginative character designs. From elegant faeries and wise wizards to majestic dragons and mischievous sprites, Luna's creations breathe life into legends and folklore."
-  },
-  {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
-  },
-  {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
-  },
-  {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
-  },
-  {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
-  },
-  {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/1096fe47d5459817e26d0068919206d3787a5c49aaa5bcd8e27a9306eb424649?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Celestial Symphony",
-    description: "Explore the cosmos through Luna's celestial landscapes and star-filled skies. Each painting invites viewers on a journey through the vast expanse of space, where galaxies collide, stars are born, and cosmic wonders await discovery."
-  },
-  {
-    imageSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/2c49f9bee7186d639b6804e4e6b04485cf324e19973a5ebddec9d849b5a091f8?apiKey=03f5df226c30468fbf8fdf985b85fe26&",
-    title: "Magical Beasts",
-    description: "Magical Creatures: Encounter mythical beings and fantastical creatures in Luna's imaginative character designs. From elegant faeries and wise wizards to majestic dragons and mischievous sprites, Luna's creations breathe life into legends and folklore."
+    imageSrc: "/bbq.jpg",
+    title: "Malam BBQ",
+    description: "Aktiviti ini kebiasaannya dijalankan di rumah kelab Tiara South di mana ia mengumpulkan penduduk-penduduk Tiara South sebagai tanda keharmonian taman."
   }
 ];
+
 
 function Program() {
   const [currentPage, setCurrentPage] = useState(1);
