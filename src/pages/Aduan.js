@@ -78,7 +78,7 @@ function Aduan() {
               </label>
               <textarea
                 id="complaint"
-                placeholder="Aduan anda berkenaan..."
+                placeholder="Aduan berkenaan..."
                 className="p-4 text-lg leading-6 border border-solid rounded-xl border-cyan-950 border-opacity-30"
                 value={complaint}
                 onChange={(e) => setComplaint(e.target.value)}
@@ -86,17 +86,14 @@ function Aduan() {
             </div>
             <button
               type="submit"
-              className="w-1/4 p-4 mt-5 font-bold text-white duration-500 rounded-lg hover:shadow-xl bg-slate-700 hover:bg-slate-950 text-md"
+              className="w-1/2 p-4 font-bold mx-auto mt-8  text-white duration-500 rounded-lg hover:shadow-xl bg-slate-700 hover:bg-slate-950 text-md"
             >
               Hantar
             </button>
           </form>
-          <button className="w-1/4 p-4 font-bold text-white duration-500 rounded-lg hover:shadow-xl bg-slate-700 hover:bg-slate-950 text-md">
-            Hantar
-          </button>
         </section>
       </main>
-      <footer className="justify-center items-center py-7 pr-16 pl-20 mt-28 w-full text-xl font-semibold leading-7 text-white uppercase bg-cyan-700 tracking-[2px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+      <footer className="justify-center items-center py-7 pr-16 pl-20 mt-28 w-full text-md font-semibold leading-7 text-white uppercase bg-cyan-700 tracking-[2px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
         <span className="text-white">Hakcipta 2024 © TiaraSouth.com</span>
       </footer>
     </div>

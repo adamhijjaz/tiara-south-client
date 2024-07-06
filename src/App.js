@@ -13,7 +13,14 @@ import Direktori from "./pages/Direktori";
 import { AuthContext } from "./helpers/AuthContext";
 
 function App() {
+  const [dropDownOpenSVC, setDropdownOpenSVC] = useState(false);
+  const [dropDownOpenLog, setDropdownOpenLog] = useState(false);
   const { authState, setAuthState } = useContext(AuthContext);
+
+  // let dropDownOpen = false;
+  // const setDropdownOpen = () => {
+  //   dropDownOpen = !dropDownOpen;
+  // };
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -22,12 +29,13 @@ function App() {
       id: 0,
       status: false,
     });
+    setDropdownOpenSVC(false);
     alert("Anda telah berjaya mendaftar keluar.");
     window.location.href = "/Login"; // Redirect to the login page
   };
 
   const NavItem = ({ text }) => (
-    <div className="flex justify-center w-full items-center text-lg hover:bg-slate-300 h-full hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
+    <div className="flex justify-center w-full items-center text-lg bg-slate-300 bg-opacity-0 hover:bg-opacity-100 transition-opacity duration-500 h-full hover:shadow-md font-semibold text-cyan-950 p-1 px-1.5 rounded-lg">
       <div>{text}</div>
     </div>
   );
@@ -37,41 +45,88 @@ function App() {
     { to: "/Latar", text: "Latar Belakang" },
     { to: "/Program", text: "Program" },
     { to: "/Aduan", text: "Ruang Aduan" },
-    { to: "/Customersvc", text: "Khidmat Pelanggan" },
+    // { to:"", text: "Khidmat Pelanggan" , toPage1:"/Aduan",toPage2:"/Direktori"},
   ];
 
-  const NavItems = () => (
-    <nav className="sticky top-0 flex self-stretch justify-between h-full gap-5 max-md:flex-wrap max-md:mt-10 ">
+  const NavItems = ({ dropDownOpen, setDropdownOpen }) => (
+    <nav className="flex self-stretch justify-between h-full gap-5 max-md:flex-wrap max-md:mt-10 z-50">
       {navLinks.map((link, index) => (
         <Link
           key={index}
           to={authState.status ? link.to : "/"}
+          onClick={() => {
+            setDropdownOpen(false);
+          }}
           className="w-full"
         >
           <NavItem text={link.text} />
         </Link>
       ))}
+      {/* Added Khidmat pelanggan out from the loop to create dropdown */}
       <Link
-        className="w-full h-full"
-        to={authState.status ? "/" : "/Login"}
+        className="w-full relative"
         onClick={() => {
-          if (authState.status) {
-            logout();
-          }
+          console.log(dropDownOpen);
+          setDropdownOpen(!dropDownOpen);
         }}
       >
-        <div className="flex items-center justify-between w-full h-full text-lg font-semibold text-white duration-300 rounded-lg hover:bg-slate-950 hover:shadow-md text-nowrap bg-slate-700">
-          <div className="mx-auto">{authState.status ? "Log Keluar" : "Log Masuk"}</div>
+        <NavItem text="Khidmat Pelanggan" />
+        {dropDownOpen && (
+          <div className="absolute top-16 left-0 right-0 w-full bg-[#334155] rounded-lg shadow-lg p-1  duration-300">
+            <Link to={authState.status ? "/Aduan" : "/"}>
+              <button className="block px-4 py-2 text-white hover:bg-[#8094b0] w-full text-left rounded-lg shadow-lg">
+                Ruang Aduan
+              </button>
+            </Link>
+            <Link to={authState.status ? "/Direktori" : "/"}>
+              <button className="block px-4 py-2 text-white hover:bg-[#8094b0] w-full text-left rounded-lg shadow-lg">
+                Direktori Servis
+              </button>
+            </Link>
+          </div>
+        )}
+      </Link>
+
+      <Link
+        onClick={() => {
+          if (authState.status) {
+            setDropdownOpenLog(!dropDownOpenLog);
+          }
+          else{
+            window.location.href = "/Login"
+          }
+        }}
+        className="w-full h-full"
+      >
+        <div className="relative flex items-center justify-between w-full h-full text-lg font-semibold text-white duration-300 rounded-lg hover:bg-slate-950 hover:shadow-md text-nowrap bg-slate-700">
+          <div className="mx-auto capitalize">
+            {authState.status ? authState.username : "Log Masuk"}
+          </div>
+          {dropDownOpenLog && (
+          <div className=" absolute top-[125%] bg-slate-700 w-full h-full rounded-lg p-1">
+            <button
+              className=" hover:bg-slate-500 w-full h-full rounded-lg  shadow-xl "
+              onClick={() => {
+                if (authState.status) {
+                  logout();
+                }
+              }}
+            >
+              <div className="text-white">Log Keluar</div>
+            </button>
+          </div>
+        )}
         </div>
       </Link>
+        
     </nav>
   );
 
   return (
     <div className="App">
       <Router>
-        <div className="relative flex flex-col bg-white ">
-          <header className="justify-between w-full p-4 bg-slate-100 max-md:px-5 max-md:max-w-full">
+        <div className="flex flex-col bg-white ">
+          <header className=" justify-between w-full p-4 bg-slate-100 max-md:px-5 max-md:max-w-full">
             <div className="flex h-full gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[16%] max-md:ml-0 max-md:w-full">
                 <div className="flex grow gap-3 justify-center px-2.5 py-px text-2xl font-semibold text-center whitespace-nowrap text-cyan-950 max-md:mt-10">
@@ -87,7 +142,10 @@ function App() {
                 </div>
               </div>
               <div className="flex flex-col w-full ml-5 max-md:ml-0 max-md:w-full">
-                <NavItems />
+                <NavItems
+                  dropDownOpen={dropDownOpenSVC}
+                  setDropdownOpen={setDropdownOpenSVC}
+                />
               </div>
             </div>
           </header>
