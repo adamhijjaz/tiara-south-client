@@ -72,7 +72,7 @@ function Direktori() {
       <section className="flex overflow-hidden relative flex-col justify-center items-center px-16 pt-16 pb-24 w-full text-8xl font-bold text-center text-white backdrop-blur-[2px] min-h-[322px] tracking-[8px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
         <img
           loading="lazy"
-          src="https://png.pngtree.com/background/20230424/original/pngtree-an-aerial-view-of-residential-buildings-with-green-roofs-picture-image_2462208.jpg"
+          src="https://media.graphassets.com/resize=fit:crop,width:1280,height:660/9qiBGM97SZinM5O3ENvv"
           alt=""
           className="absolute z-[-2] inset-0 object-cover size-full"
         />
