@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import { useState, useContext } from "react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -43,8 +42,9 @@ function App() {
   const navLinks = [
     { to: "/Berita", text: "Berita Terkini" },
     { to: "/Latar", text: "Latar Belakang" },
+    { to: "/Carta", text: "Carta Organisasi" },
     { to: "/Program", text: "Program" },
-    { to: "/Aduan", text: "Ruang Aduan" },
+    // { to: "/Aduan", text: "Ruang Aduan" },
     // { to:"", text: "Khidmat Pelanggan" , toPage1:"/Aduan",toPage2:"/Direktori"},
   ];
 

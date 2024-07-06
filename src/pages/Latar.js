@@ -2,8 +2,8 @@ import React from "react";
 
 function Latar() {
   return (
-    <div className="flex flex-col bg-white">
-      <main className="flex flex-col self-center px-5 mt-36 w-full text-4xl  text-center max-w-[1300px] max-md:mt-10 max-md:max-w-full">
+    <div className="flex flex-col bg-[url('https://www.legendkitchen.com/backend/uploads/gallery/210526_2.jpg')] bg-no-repeat bg-cover ">
+      <main className=" backdrop-blur-md flex flex-col self-center p-5 px-5 mt-36 w-full text-4xl bg-slate-300 bg-opacity-70 rounded-xl shadow-xl border border-cyan-700 border-opacity-50  text-center max-w-[1300px] max-md:mt-10 max-md:max-w-full">
         <h1 className="self-center text-cyan-700 max-md:max-w-full uppercase font-extrabold">
           Latar Belakang
         </h1>

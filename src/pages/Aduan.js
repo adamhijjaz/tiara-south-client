@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../helpers/AuthContext";
 
 const InputField = ({ label, id, value, onChange }) => (
   <div className="flex flex-col mt-10 max-md:max-w-full">
@@ -9,9 +10,10 @@ const InputField = ({ label, id, value, onChange }) => (
     <input
       id={id}
       placeholder={label.toString()}
-      className="px-4 py-2 mt-1 text-lg leading-6 border border-solid shrink-0 h-14 rounded-xl border-cyan-950 border-opacity-30 max-md:max-w-full"
+      className="px-4 py-2 mt-1 text-lg leading-6 capitalize border border-solid shrink-0 h-14 rounded-xl border-cyan-950 border-opacity-30 max-md:max-w-full"
       value={value}
       onChange={onChange}
+      disabled={false}
     />
   </div>
 );
@@ -20,6 +22,7 @@ function Aduan() {
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [complaint, setComplaint] = useState("");
+  const { authState } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,8 +66,10 @@ function Aduan() {
             <InputField
               label="Name"
               id="name"
-              value={name}
+              value={authState.username}
               onChange={(e) => setName(e.target.value)}
+              className="cursor-not-allowed pointer-events-none"
+              disabled={true}
             />
             <InputField
               label="Subjek"
@@ -79,10 +84,13 @@ function Aduan() {
               <textarea
                 id="complaint"
                 placeholder="Aduan berkenaan..."
-                className="p-4 text-lg leading-6 border border-solid rounded-xl border-cyan-950 border-opacity-30"
+                className="relative p-4 text-lg leading-6 border border-solid rounded-xl border-cyan-950 border-opacity-30"
                 value={complaint}
                 onChange={(e) => setComplaint(e.target.value)}
               ></textarea>
+              <div className="w-full text-right right-4 text-sm">
+                <span className={complaint.length > 250 ? 'text-red-500 font-bold' : 'text-gray-500'}>{complaint.length}</span>
+              </div>
             </div>
             <button
               type="submit"
