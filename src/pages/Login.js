@@ -2,19 +2,21 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import { IconSpinner } from "../Icon/Icon";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuthState } = useContext(AuthContext); // Ensure correct destructuring
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const login = async () => {
     const data = {
       email: email,
       password: password,
     };
-
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://tiarasouth.onrender.com/auth/login",
@@ -37,6 +39,8 @@ function Login() {
     } catch (error) {
       alert("Error during login process. Please try again.");
       console.error("Error in Signing in:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,10 +53,18 @@ function Login() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="">
+      {loading && (
+          <div className="absolute w-full h-full bg-gray-300 bg-opacity-30 backdrop-blur-md flex justify-center items-center z-50">
+            <div className="">
+              <IconSpinner className="w-[30vh] animate-spin" />
+              Logging In...
+            </div>
+          </div>
+        )}
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-        <section className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
-          <div className="flex overflow-hidden relative flex-col grow justify-center items-start px-16 py-20 text-white min-h-[1024px] max-md:px-5 max-md:max-w-full">
+        <section className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full bg-white">
+          <div className="flex overflow-hidden relative flex-col grow justify-center items-start px-16 py-20 text-white h-full max-md:px-5 max-md:max-w-full">
             <div>
               <img
                 loading="lazy"
@@ -75,8 +87,8 @@ function Login() {
                 </div>
               </div>
               <p className="mt-4 text-2xl max-md:max-w-full">
-              Selamat Datang kepada semua pengunjung laman web Persatuan
-              Penduduk Tiara South, Semenyih.
+                Selamat Datang kepada semua pengunjung laman web Persatuan
+                Penduduk Tiara South, Semenyih.
               </p>
             </div>
           </div>

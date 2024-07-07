@@ -50,7 +50,7 @@ function App() {
   ];
 
   const NavItems = ({ dropDownOpen, setDropdownOpen }) => (
-    <nav className="flex self-stretch justify-between h-full gap-5 max-md:flex-wrap max-md:mt-10 z-50">
+    <nav className="flex self-stretch justify-between h-full gap-5 max-md:flex-wrap max-md:mt-10 z-40">
       {navLinks.map((link, index) => (
         <Link
           key={index}
