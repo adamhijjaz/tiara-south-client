@@ -131,11 +131,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="flex flex-col bg-white ">
-          <header className=" justify-between w-full p-4 bg-slate-100 max-md:px-5 max-md:max-w-full">
+        <div className="sticky top-0 w-full flex flex-col bg-slate-100 z-50 ">
+          <header className=" justify-between w-full p-4 bg-slate-100 max-md:px-5 max-md:max-w-full shadow-xl">
             <div className="flex h-full gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[16%] max-md:ml-0 max-md:w-full">
-                <div className="flex grow gap-3 justify-center px-2.5 py-px text-2xl font-semibold text-center whitespace-nowrap text-cyan-950 max-md:mt-10">
+                <div className="   flex grow gap-3 justify-center px-2.5 py-px text-2xl font-semibold text-center whitespace-nowrap text-cyan-950 max-md:mt-10">
                   <img
                     loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/3be0cf0cc439d7f3e137cba276074492f1d6a29d7859629136bbc029f4e1940c?apiKey=03f5df226c30468fbf8fdf985b85fe26&"
