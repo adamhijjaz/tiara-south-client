@@ -134,7 +134,7 @@ function Direktori() {
               className=" w-1/2 flex items-center justify-end gap-x-2 "
             >
               <img
-                className="rounded-xl w-3/5 duration-300 hover:scale-105 hover:shadow-lg transition-transform"
+                className="rounded-xl w-3/5 duration-1000 hover:scale-105 hover:shadow-lg transition-transform"
                 src={contact_us.imageSrc}
               ></img>
             </Link>
@@ -158,18 +158,23 @@ function Direktori() {
                       <div className="font-bold">Yang Dipertua :</div>
 
                       <div className="flex ">
-                        <IconProfile></IconProfile>: 
-                        {item.name}
+                        <IconProfile></IconProfile> : {item.name}
                       </div>
-                      <div className="">Alamat : {item.email1}</div>
+                      <div className="flex">
+                        <MdiEmail></MdiEmail> : {item.email1}
+                      </div>
                     </div>
                   )}
                   {item.email2 && (
                     <div className="mt-2">
                       <div className="font-bold">Setiausaha :</div>
 
-                      <div className="">Nama : {item.name}</div>
-                      <div className="">Alamat Emel : {item.email2}</div>
+                      <div className="flex ">
+                        <IconProfile></IconProfile> : {item.name}
+                      </div>
+                      <div className="flex">
+                        <MdiEmail></MdiEmail> : {item.email2}
+                      </div>
                     </div>
                   )}
                 </div>
