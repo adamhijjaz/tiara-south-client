@@ -31,7 +31,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "https://tiarasouth.onrender.com/auth/signup",
+        "https://tiarasouth-iri7.onrender.com/auth/signup",
         data
       );
 
@@ -64,7 +64,7 @@ function Signup() {
         )}
         <div className="flex flex-col max-w-full w-[386px] mx-auto">
           <h1 className="text-3xl font-medium text-zinc-800">
-            Welcome to Tiara South{" "}
+            Selamat Datang ke Tiara South{" "}
           </h1>
         </div>
         <form>
@@ -104,15 +104,6 @@ function Signup() {
                 <div htmlFor="password" className="text-base text-stone-500">
                   Kata Laluan Anda
                 </div>
-                <button className="flex gap-3 text-lg text-right text-stone-500 text-opacity-80">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/5140d1751deadb6ffe6ce71941c3fdb5f2023605350f9ec7903c30d5418e27aa?apiKey=03f5df226c30468fbf8fdf985b85fe26&"
-                    alt=""
-                    className="w-6 shrink-0 aspect-square"
-                  />
-                  <span>Hide</span>
-                </button>
               </div>
               <input
                 type="password"
@@ -131,7 +122,7 @@ function Signup() {
               className="flex flex-col justify-center px-8 py-4 bg-slate-700 rounded-[16px] max-md:px-5 hover:bg-slate-950 transition-colors duration-500"
             >
               <span className="w-full text-center text-nowrap">
-                Create an account
+                Cipta Akaun
               </span>
             </button>
             <p className="justify-center p-0.5 text-base underline text-neutral-900">

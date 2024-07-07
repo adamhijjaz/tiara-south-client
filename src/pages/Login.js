@@ -19,7 +19,7 @@ function Login() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://tiarasouth.onrender.com/auth/login",
+        "https://tiarasouth-iri7.onrender.com/auth/login",
         data
       );
 
@@ -55,13 +55,13 @@ function Login() {
   return (
     <div className="">
       {loading && (
-          <div className="absolute top-0 bottom-0 right-0 left-0 w-full h-full bg-gray-300 bg-opacity-30 backdrop-blur-md flex justify-center items-center z-50">
-            <div className="">
-              <IconSpinner className="w-[30vh] animate-spin" />
-              Logging In...
-            </div>
+        <div className="absolute top-0 bottom-0 right-0 left-0 w-full h-full bg-gray-300 bg-opacity-30 backdrop-blur-md flex justify-center items-center z-50">
+          <div className="">
+            <IconSpinner className="w-[30vh] animate-spin" />
+            Logging In...
           </div>
-        )}
+        </div>
+      )}
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
         <section className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full bg-white">
           <div className="flex overflow-hidden relative flex-col grow justify-center items-start px-16 py-20 text-white h-full max-md:px-5 max-md:max-w-full">
@@ -132,18 +132,6 @@ function Login() {
                       >
                         Kata Laluan Anda
                       </label>
-                      <button
-                        type="button"
-                        className="flex gap-3 text-lg text-right whitespace-nowrap text-stone-500 text-opacity-80"
-                      >
-                        <img
-                          loading="lazy"
-                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5140d1751deadb6ffe6ce71941c3fdb5f2023605350f9ec7903c30d5418e27aa?apiKey=03f5df226c30468fbf8fdf985b85fe26&"
-                          alt=""
-                          className="w-6 my-auto shrink-0 aspect-square"
-                        />
-                        <span>Sembunyi</span>
-                      </button>
                     </div>
                     <input
                       type="password"
@@ -160,7 +148,7 @@ function Login() {
                   <Link
                     onClick={() => {
                       alert(
-                        "No Implementation, If you forget Please Login or Register Again"
+                        "Tiada Implementasi, Sila Log In Semula atau Cipta Akaun Baru"
                       );
                     }}
                     className="self-end mt-2 text-base text-right underline text-neutral-900"

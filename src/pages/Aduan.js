@@ -31,7 +31,7 @@ function Aduan() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://tiarasouth.onrender.com/complaints",
+        "https://tiarasouth-iri7.onrender.com/complaints",
         {
           username: authState.username,
           subject: subject,

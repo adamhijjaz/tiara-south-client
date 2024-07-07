@@ -6,7 +6,7 @@ function Home() {
   useEffect(() => {
     const checkAccessToken = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/auth/auth", {
+        const response = await axios.get("https://tiarasouth-iri7.onrender.com/auth/auth", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
