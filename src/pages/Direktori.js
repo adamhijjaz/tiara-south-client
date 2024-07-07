@@ -22,8 +22,8 @@ const contact_us = {
       address:
         "Persatuan Penduduk Tiara South, \n 43500 Semenyih, \n Selangor.",
     },
-    { name: "Izwan bin Syahrul", email1: "izwan@gmail.com" },
-    { name: "Mokhtar bin Abdullah", email2: "mokhtar@gmail.com" },
+    { name: "Hamdan bin Taib", email1: "hamdan@gmail.com" },
+    { name: "Mokhtar bin Jaafar", email2: "mokhtar@gmail.com" },
   ],
   goto: "https://www.google.com/maps/place/Tiara+South/@2.9293015,101.8426264,15z/data=!4m6!3m5!1s0x31cdce5f321901d9:0x7284d4f9fd8cb835!8m2!3d2.9293015!4d101.8426264!16s%2Fg%2F11b6nlnpnc?entry=ttu",
 };
@@ -155,7 +155,7 @@ function Direktori() {
                   )}
                   {item.email1 && (
                     <div className="mt-2">
-                      <div className="font-bold">Yang Dipertua :</div>
+                      <div className="font-bold">Ketua Persatuan Penduduk :</div>
 
                       <div className="flex ">
                         <IconProfile></IconProfile> : {item.name}
@@ -167,7 +167,7 @@ function Direktori() {
                   )}
                   {item.email2 && (
                     <div className="mt-2">
-                      <div className="font-bold">Setiausaha :</div>
+                      <div className="font-bold">Timbalan Ketua Persatuan Penduduk  :</div>
 
                       <div className="flex ">
                         <IconProfile></IconProfile> : {item.name}
